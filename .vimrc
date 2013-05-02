@@ -138,8 +138,6 @@ Bundle 'L9'
 Bundle 'FuzzyFinder'
 " non github repos
 Bundle 'git://git.wincent.com/command-t.git'
-" ...
-Bundle 'git@github.com:Valloric/YouCompleteMe.git'
 
 filetype plugin indent on     " required!
 "
