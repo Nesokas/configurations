@@ -99,17 +99,6 @@ autocmd BufWritePre *.py normal m`:%s/\s\+$//e``
 set omnifunc=pythoncomplete#Complete
 inoremap <Nul> <C-x><C-o>
 
-" `gf` jumps to the filename under the cursor.  Point at an import statement
-" and jump to it!
-python << EOF
-import os
-import sys
-import vim
-for p in sys.path:
-        if os.path.isdir(p):
-                    vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
-EOF
-
 " Use :make to see syntax errors. (:cn and :cp to move around, :dist to see
 " all errors)
 set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
@@ -151,3 +140,4 @@ filetype plugin indent on     " required!
 " NOTE: comments after Bundle command are not allowed..
 
 nnoremap <silent> <C-D> :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.pyc$']
