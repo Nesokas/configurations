@@ -127,6 +127,7 @@ Bundle 'L9'
 Bundle 'FuzzyFinder'
 " non github repos
 Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'airblade/vim-gitgutter'
 
 filetype plugin indent on     " required!
 "
@@ -141,3 +142,5 @@ filetype plugin indent on     " required!
 
 nnoremap <silent> <C-D> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$']
+
+let mapleader=","

@@ -116,3 +116,9 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 # VIM
 export LC_ALL=en_US.utf-8 
 export LANG="$LC_ALL"
+
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+    export TERM='xterm-256color'
+else
+    export TERM='xterm-color'
+fi
