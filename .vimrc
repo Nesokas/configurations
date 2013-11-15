@@ -5,7 +5,7 @@ set autoindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
-setfiletype htmldjango
+filetype on
 set backspace=2
 set mouse=a
 
@@ -106,7 +106,6 @@ set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
 " Vundle
 set nocompatible               " be iMproved
-filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -143,4 +142,25 @@ filetype plugin indent on     " required!
 nnoremap <silent> <C-D> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$']
 
-let mapleader=","
+command! W :w
+
+" Run pep8
+let g:pep8_map='<leader>8'
+
+set title
+" don't bell or blink
+set noerrorbells
+set vb t_vb=
+
+set cursorline              " have a line indicate the cursor location
+set ruler                   " show the cursor position all the time
+set matchpairs+=<:>         " show matching <> (html mainly) as well
+set foldmethod=indent       " allow us to fold on indents
+set foldlevel=99            " don't fold by default
+
+set smarttab                " Handle tabs more intelligently 
+set hlsearch                " Highlight searches by default.
+set incsearch               " Incrementally search while typing a /regex
+
+" hide matches on <leader>space
+nnoremap <leader><space> :nohlsearch<cr>

@@ -23,8 +23,18 @@ NO_COLOUR="\[\033[0m\]"
  
 PS1="$GREEN\u$NO_COLOUR:\W$YELLOW\$(parse_git_branch)$NO_COLOUR\$ "
 
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+    . /opt/local/etc/profile.d/bash_completion.sh
+fi
+
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
+export PATH=/opt/local/bin:$PATH
+
+######################### MAGIC BIT ##################################
+alias magicbit='ssh ines@magicbit'
+
+######################### GIT ########################################
 
 function git_flow_current_feature()
 {
@@ -55,25 +65,6 @@ function start()
     fi
 }
 
-alias st='git status'
-alias pull='git pull'
-alias push='git push'
-alias branch='git branch'
-alias checkout='git checkout'
-alias commit='git commit'
-alias publish='git flow feature publish $(git_flow_current_feature)'
-alias finish='git flow feature finish -F $(git_flow_current_feature)'
-alias finishL='git flow feature finish $(git_flow_current_feature)'
-alias track='git flow feature track $1'
-alias flowDiff='git flow feature diff $(git_flow_current_feature)'
-alias flowCheckout='git flow feature checkout $1'
-
-alias runserver='bin/django runserver'
-alias syncdb='bin/django syncdb'
-alias migrate='bin/django migrate'
-alias schemamigration='bin/django schemamagration'
-alias collectstatic='bin/django collectstatic'
-
 git()
 {
     if [ "$1" = "push" -a "$#" = "1" ]
@@ -95,9 +86,33 @@ git()
     fi
 }
 
-if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
-    . /opt/local/etc/profile.d/bash_completion.sh
-fi
+
+alias st='git status'
+alias pull='git pull'
+alias push='git push'
+alias branch='git branch'
+alias checkout='git checkout'
+alias commit='git commit'
+alias publish='git flow feature publish $(git_flow_current_feature)'
+alias finish='git flow feature finish -F $(git_flow_current_feature)'
+alias finishL='git flow feature finish $(git_flow_current_feature)'
+alias track='git flow feature track $1'
+alias flowDiff='git flow feature diff $(git_flow_current_feature)'
+alias flowCheckout='git flow feature checkout $1'
+
+##############################################################################
+
+############################# DJANGO #########################################
+
+alias runserver='bin/django runserver'
+alias syncdb='bin/django syncdb'
+alias migrate='bin/django migrate'
+alias schemamigration='bin/django schemamagration'
+alias collectstatic='bin/django collectstatic'
+
+##############################################################################
+
+########################### SHERPANY ##########################################
 
 lessc()
 {
@@ -109,11 +124,12 @@ lessc()
     fi
 }
 
-export CLICOLOR=1
-export LSCOLORS=ExFxCxDxBxegedabagacad
+alias activate='source .ve/bin/activate'
+
+#############################################################################
 
 
-# VIM
+############################### VIM #########################################
 export LC_ALL=en_US.utf-8 
 export LANG="$LC_ALL"
 
@@ -122,3 +138,5 @@ if [ -e /usr/share/terminfo/x/xterm-256color ]; then
 else
     export TERM='xterm-color'
 fi
+
+###########################################################################
